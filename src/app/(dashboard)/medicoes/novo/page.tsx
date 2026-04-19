@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"
+
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -131,7 +133,7 @@ export default function NovaMedicaoPage() {
     const { data, error: insertError } = await supabase
       .from('medicoes')
       .insert({
-        centro_de_custo_id: ccId,
+        cc_id: ccId,
         mes_referencia: `${mesReferencia}-01`,
         status: 'rascunho',
         realizado_hn: realizado,
@@ -139,7 +141,7 @@ export default function NovaMedicaoPage() {
         perda_contrato: perdaCalculada,
         valor_spot: spot,
         valor_total: totalCalculado,
-        criado_por: usuario!.id,
+        created_by_id: usuario!.id,
       })
       .select()
       .single()
@@ -271,7 +273,7 @@ export default function NovaMedicaoPage() {
 
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              🧮 Cálculos
+              Cálculos
             </h3>
           </div>
 
